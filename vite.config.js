@@ -12,6 +12,7 @@ export default defineConfig({
                 'resources/js/delUser.js',
                 'resources/js/delRole.js',
                 'resources/js/delPermission.js',
+                'resources/js/setPermissions.js',
                 'resources/js/setPerPages.js',
                 'resources/js/setPermission2Roles.js',
                 'resources/js/setUser2Roles.js',
