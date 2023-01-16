@@ -15,13 +15,13 @@ class UserSeeder extends Seeder
     public function run()
     {
 //      User::findOrFail('2')->assignRole('gestione utenti');
-//        User::create([
-//                'name' => 'redattore',
-//                'surname' => 'redattore',
-//                'username' => 'redattore_redattore',
-//                'email' => 'redattore@example.com',
-//                'email_verified_at' => now(),
-//                'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-//            ])->assignRole('redattore');;
+        User::create([
+                'name' => 'super',
+                'surname' => 'admin',
+                'username' => 'superadmin',
+                'email' => 'superadmin@example.com',
+                'email_verified_at' => now(),
+                'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            ])->assignRole('amministratore');
     }
 }
