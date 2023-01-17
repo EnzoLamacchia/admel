@@ -15,6 +15,7 @@ export default defineConfig({
                 'resources/js/setPermissions.js',
                 'resources/js/setPerPages.js',
                 'resources/js/setPermission2Roles.js',
+                'resources/js/setRoles.js',
                 'resources/js/setUser2Roles.js',
                 'resources/js/setUser2Permissions.js',
                 'resources/js/manageTable.js',
