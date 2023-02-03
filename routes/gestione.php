@@ -29,7 +29,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified','role_or_permission:am
     Route::get('/setperpage/{perPage}', [DashboardController::class,'setPerPage']);
 //  --- Ruoli ---
     Route::get('/ruoli', [RoleController::class,'index'])->name('gestioneruoli');
-//    Route::get('/ruoli/setperpage/{perPage}', [RoleController::class,'setPerPage']);
+    Route::get('/ruoli/filtered', [RoleController::class, 'show'])->name('filtraruoli');
     Route::get('/ruoli/{id}/edit', [RoleController::class,'edit'])->name('editruolo');
     Route::patch('/ruoli/{id}/update', [RoleController::class,'update'])->name('aggiornaruolo');
     Route::get('/ruoli/{id}/users2role', [RoleController::class,'users2Role'])->name('utenti2ruolo');
@@ -43,6 +43,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified','role_or_permission:am
     Route::delete('/ruoli/{id}/delete', [RoleController::class,'destroy'])->name('cancellaruolo');
 //  --- Permessi ---
     Route::get('/permessi', [PermissionController::class,'index'])->name('gestionepermessi');
+    Route::get('/permessi/filtered', [PermissionController::class, 'show'])->name('filtrapermessi');
     Route::get('/permessi/crea', [PermissionController::class,'create'])->name('creapermesso');
     Route::post('/permessi/salva', [PermissionController::class, 'store'])->name('salvapermesso');
     Route::get('/permessi/{id}/edit', [PermissionController::class,'edit'])->name('editpermesso');
@@ -55,6 +56,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified','role_or_permission:am
     Route::get('/utenti', [UserController::class, 'index'])->name('gestioneutenti');
     Route::get('/utenti/crea', [UserController::class, 'create'])->name('creautente');
     Route::post('/utenti/salva', [UserController::class, 'store'])->name('salvautente');
+    Route::get('/utenti/filtered', [UserController::class, 'show'])->name('filtrautenti');
     Route::get('/utenti/{id}/onoff', [UserController::class,'onoffutente'])->name('onoffutente');
 //    Route::get('/utenti/setperpage/{perPage}', [UserController::class,'setPerPage']);
 //    Route::post('/utenti/{id}/attiva', [UserController::class,'attiva'])->name('attivautente');

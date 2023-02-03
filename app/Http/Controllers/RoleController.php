@@ -35,10 +35,30 @@ class RoleController extends Controller
         return view('gestione.ruoli.index', ['roles' => $roles]);
     }
 
-//    public function setPerPage($perPage) {
-//        Session::put('perPage', $perPage);
-//        return true;
-//    }
+    /**
+     * Show the list after filtering.
+     *
+     */
+    public function show(Request $request)
+    {
+        $perPage = Session::get('perPage') ? Session::get('perPage') : 10;
+        $roles = $this->qB2Find($request)
+            ->paginate($perPage)
+            ->withQueryString();
+        //withQueryString() serve ad allegare la query-string alla paginazione in modo che navigando le pagine
+        //non si perdano i criteri di ricerca effettuati
+
+        return view('gestione.ruoli.index', ['roles' => $roles]);
+    }
+
+    public function qB2Find($request){
+        $key = $request->input('searchkey');
+        //        dd([$sez, $year]);
+        $qbPartial = Role::orderBy('id', 'ASC')
+            ->orwhere('name', 'LIKE', '%'.$key.'%')
+            ->orwhere('description', 'LIKE', '%'.$key.'%');
+        return $qbPartial;
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -67,17 +87,6 @@ class RoleController extends Controller
             'description'=> $request->input('description'),
             ]);
         return view('gestione.ruoli.editrole', ['ruolo'=>$ruolo]);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
     }
 
     /**

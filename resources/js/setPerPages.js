@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     console.log('INIZIO CHIAMATA AJAX');
                     var resp = ajCall.responseText;
                     if(resp){
-                        window.location.replace(location.pathname);
+                        window.location.replace(location.pathname+location.search);
                     }else{
                         alert('Problem contacting server');
                     }

@@ -8,7 +8,7 @@
     <!-- component -->
 {{--    @csrf--}}
     <div class="w-full bg-white px-6 py-8 rounded-md ">
-        <x-header.header title="Utenti" urlCerca="#" nomeBtnNuovo="Nuovo Utente" urlNuovo="{{route('creautente')}}">
+        <x-header.header title="Utenti" urlCerca="{{route('filtrautenti')}}" nomeBtnNuovo="Nuovo Utente" urlNuovo="{{route('creautente')}}">
         </x-header.header>
         <div class="div bg-grey text-left py-2" id="perPage">risultati per pagina:
             <a class="@if (Session::get('perPage') == 5) bg-indigo-600 text-white @else bg-white text-dark @endif

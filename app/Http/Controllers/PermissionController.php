@@ -26,6 +26,27 @@ class PermissionController extends Controller
         return view('gestione.permessi.index', ['permissions' => $permissions]);
     }
 
+    public function show(Request $request)
+    {
+        $perPage = Session::get('perPage') ? Session::get('perPage') : 10;
+        $permissions = $this->qB2Find($request)
+            ->paginate($perPage)
+            ->withQueryString();
+        //withQueryString() serve ad allegare la query-string alla paginazione in modo che navigando le pagine
+        //non si perdano i criteri di ricerca effettuati
+
+        return view('gestione.permessi.index', ['permissions' => $permissions]);
+    }
+
+    public function qB2Find($request){
+        $key = $request->input('searchkey');
+        //        dd([$sez, $year]);
+        $qbPartial = Permission::orderBy('id', 'ASC')
+            ->orwhere('name', 'LIKE', '%'.$key.'%')
+            ->orwhere('description', 'LIKE', '%'.$key.'%');
+        return $qbPartial;
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -52,17 +73,6 @@ class PermissionController extends Controller
         ]);
         Artisan::call('cache:clear');
         return view('gestione.permessi.editpermission', ['permesso'=>$permesso]);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
     }
 
     /**

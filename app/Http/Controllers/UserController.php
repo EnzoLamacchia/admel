@@ -32,15 +32,44 @@ class UserController extends Controller
         //
         $this->perPage = Session::get('perPage') ? Session::get('perPage') : 10;
         $users = User::orderBy('id', 'ASC')->paginate($this->perPage);
-        return view('gestione.utenti.index', ['users' => $users]);
+
+        return view('gestione.utenti.index', ['users' => $users, 'ph' => '']);
     }
 
-//    Session::put('perPage', $perPage);
+    /**
+     * Show the list after filtering.
+     *
+     */
+    public function show(Request $request)
+    {
+//        dd($request);
+//        dd($this->qB2Find($request));
+        $placeholder = $request->input('searchkey');
+//        dd($placeholder);
+        $this->perPage = Session::get('perPage') ? Session::get('perPage') : 10;
+        $users = $this->qB2Find($request)
+            ->paginate($this->perPage)
+            ->withQueryString();
+        //withQueryString() serve ad allegare la query-string alla paginazione in modo che navigando le pagine
+        //non si perdano i criteri di ricerca effettuati
 
-//    public function setPerPage($perPage) {
-//        Session::put('perPage', $perPage);
-//        return true;
-//    }
+        return view('gestione.utenti.index', ['users' => $users, 'ph' => $placeholder]);
+    }
+
+    public function qB2Find($request){
+//        $sez = $request->input('ddCompetenza');
+//        $oggetto = str_replace('%', '\\%', $request->input('ddOggetto'));
+//        $nr = $request->input('ddNrDet');
+        $key = $request->input('searchkey');
+        //        dd([$sez, $year]);
+        $qbPartial = User::orderBy('id', 'ASC')
+            ->orwhere('name', 'LIKE', '%'.$key.'%')
+            ->orwhere('surname', 'LIKE', '%'.$key.'%')
+            ->orwhere('username', 'LIKE', '%'.$key.'%')
+            ->orwhere('email', 'LIKE', '%'.$key.'%');
+        return $qbPartial;
+    }
+
     /**
      * Show the form for creating a new resource.
      *
