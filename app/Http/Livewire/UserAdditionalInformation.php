@@ -29,10 +29,10 @@ class UserAdditionalInformation extends Component
         $this->sex = $this->info[0]['sex'];
         $this->note = $this->info[0]['note'];
         $this->cf = $this->info[0]['cf'];
-        $this->country_id = $this->info[0]['country_id'];
-        $this->country = Country::find($this->info[0]['country_id'])->name;
-        $this->city_id = $this->info[0]['city_id'];
-        $this->city = City::find($this->info[0]['city_id'])->name;
+        $this->country_id = $this->info[0]['country_id'] ? $this->info[0]['country_id'] : '110';
+        $this->country = Country::find($this->info[0]['country_id'])->name ? Country::find($this->info[0]['country_id'])->name : 'Italia';
+        $this->city_id = $this->info[0]['city_id'] ?  $this->info[0]['city_id'] : null;
+        $this->city = $this->city_id ? City::find($this->info[0]['city_id'])->name : '';
         $this->sexes = ['M','F'];
     }
 
@@ -45,12 +45,12 @@ class UserAdditionalInformation extends Component
     public function validationStep(){
         $this->validate([
             'birthday' => 'date_format:d/m/Y',
-            'phone' => 'string|min:8',
-            'mobile' => 'string|min:8',
-            'address'=> 'string|max:255',
+            'phone' => 'nullable|string|min:8',
+            'mobile' => 'nullable|string|min:8',
+            'address'=> 'nullable|string|max:255',
             'sex'=> ['required', Rule::in(['M', 'F'])],
-            'note'=> 'string|min:2|max:255',
-            'cf'=> 'string|min:16|max:16',
+            'note'=> 'nullable|string|min:2|max:255',
+            'cf'=> 'nullable|string|min:16|max:16',
         ],['birthday.date_format'=>'Data di nascita -> formato non consentito. Utilizzare (gg/mm/aaaa)',
             'phone.required'=>'il nr. di telefono è un elemento obbligatorio',
             'phone.min'=>'nr. di telefono -> minimo 8 caratteri',
@@ -75,7 +75,7 @@ class UserAdditionalInformation extends Component
         'phone' => $this->phone,
         'mobile_number' => $this->mobile,
         'address' => $this->address,
-        'city_id' => City::getCityidAttribute($this->city)[0]->id,
+        'city_id' => $this->address ? City::getCityidAttribute($this->city)[0]->id : null,
         'sex' => $this->sex,
         'note' => $this->note,
         'cf' => strtoupper($this->cf),
