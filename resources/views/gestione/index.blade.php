@@ -4,7 +4,7 @@
                 <div class="flex flex-col md:flex-row w-full bg-white px-6 py-8 rounded-md">
 
                         <div id="main" class="main-content flex-1 mt-12 md:mt-2 pb-24 md:pb-5">
-                            <x-header.header title="Dashboard" urlCerca="" nomeBtnNuovo="" urlNuovo="">
+                            <x-header.header title="Dashboard di Gestione" urlCerca="" nomeBtnNuovo="" urlNuovo="">
                             </x-header.header>
 
                             <div class="flex flex-wrap">
