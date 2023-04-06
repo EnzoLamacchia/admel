@@ -1,4 +1,4 @@
-<div class="w-60 pl-3">
+<div class="w-fit pl-3">
     <div class="flex-col w-full md:flex md:flex-row md:min-h-screen px-2">
         <div @click.away="open = true" class="flex flex-col flex-shrink-0 shadow-lg rounded w-full text-gray-700 bg-white md:w-64 dark-mode:text-gray-200 dark-mode:bg-gray-800" x-data="{ open: true }">
             <div class="flex flex-row bg-gray-100 items-center justify-between flex-shrink-0 py-6 px-3"
@@ -33,7 +33,7 @@
                     Permessi
                 </a>
 
-                <div class="relative" x-data="@if(request()->is('*/statiutente')){ open: true } @else { open: false } @endif">
+                <div class="relative" x-data="@if(request()->is('*/statiutente','*/messaggistica')){ open: true } @else { open: false } @endif">
                     <button @click="open = !open" class="flex flex-row block w-full px-4 py-2 mt-2 text-sm text-gray-900
                             font-semibold text-left bg-transparent rounded-lg
                             dark-mode:bg-transparent dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:focus:bg-gray-600 dark-mode:hover:bg-gray-600
@@ -66,7 +66,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="relative" x-data="@if(request()->is('*/contenuti')){ open: true } @else { open: false } @endif">
+                <div class="relative" x-data="@if(request()->is('*/docummagini','*/tags','*/vocabolari' )){ open: true } @else { open: false } @endif">
                     <button @click="open = !open" class="flex flex-row block w-full px-4 py-2 mt-2 text-sm text-gray-900
                             font-semibold text-left bg-transparent rounded-lg
                             dark-mode:bg-transparent dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:focus:bg-gray-600 dark-mode:hover:bg-gray-600
