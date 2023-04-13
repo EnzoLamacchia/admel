@@ -72,7 +72,8 @@ class PermissionController extends Controller
             'description'=> $request->input('description'),
         ]);
         Artisan::call('cache:clear');
-        return view('gestione.permessi.editpermission', ['permesso'=>$permesso]);
+//        return view('gestione.permessi.editpermission', ['permesso'=>$permesso]);
+        return redirect(route('editpermesso', ['id'=>$permesso['id']]));
     }
 
     /**
@@ -105,7 +106,8 @@ class PermissionController extends Controller
         $res = $permesso->save();
         Artisan::call('cache:clear');
         if ($res) session()->flash('messaggio','Salvato!');
-        return view('gestione.permessi.editpermission', ['permesso'=>$permesso]);
+//        return view('gestione.permessi.editpermission', ['permesso'=>$permesso]);
+        return redirect(route('editpermesso', ['id'=>$permesso['id']]));
     }
 
     /**

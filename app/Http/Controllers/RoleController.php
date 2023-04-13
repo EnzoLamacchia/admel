@@ -86,7 +86,8 @@ class RoleController extends Controller
             'guard_name'=> "web",
             'description'=> $request->input('description'),
             ]);
-        return view('gestione.ruoli.editrole', ['ruolo'=>$ruolo]);
+//        return view('gestione.ruoli.editrole', ['ruolo'=>$ruolo]);
+        return redirect(route('editruolo', ['id'=>$ruolo['id']]));
     }
 
     /**
@@ -119,7 +120,8 @@ class RoleController extends Controller
 
         $res = $ruolo->save();
         if ($res) session()->flash('messaggio','Salvato!');
-        return view('gestione.ruoli.editrole', ['ruolo'=>$ruolo]);
+//        return view('gestione.ruoli.editrole', ['ruolo'=>$ruolo]);
+        return redirect(route('editruolo', ['id'=>$ruolo['id']]));
     }
 
     /**

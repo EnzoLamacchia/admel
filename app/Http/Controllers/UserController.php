@@ -108,7 +108,8 @@ class UserController extends Controller
         $user=User::find($user->id); //ripesco tutti i parametri dell'oggetto $user
         $stati = UserStatus::all(); //ripesco tutti gli stati possibili
 
-        return view('gestione.utenti.edituser', ['user'=>$user, 'stati'=>$stati]);
+//        return view('gestione.utenti.edituser', ['user'=>$user, 'stati'=>$stati]);
+        return redirect(route('editutente', ['id'=>$user['id']]));
 //        return redirect('/gestione/utenti');
     }
 
@@ -142,7 +143,8 @@ class UserController extends Controller
         $user->password = Hash::make($request->input('password'));
         $res = $user->save();
         if ($res) session()->flash('messaggio','Salvato!');
-        return view('gestione.utenti.editpw', ['user'=>$user]);
+//        return view('gestione.utenti.editpw', ['user'=>$user]);
+        return redirect(route('editapassword', ['id'=>$user['id']]));
     }
 
     /* Attiva/disattiva utente
@@ -192,7 +194,8 @@ class UserController extends Controller
         if ($res) session()->flash('messaggio','Salvato!');
         $stati = UserStatus::all();
 
-        return view('gestione.utenti.edituser', ['user'=>$user, 'stati' => $stati]);
+//        return view('gestione.utenti.edituser', ['user'=>$user, 'stati' => $stati]);
+        return redirect(route('editutente', ['id'=>$user['id']]));
     }
 
     /**

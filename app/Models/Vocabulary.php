@@ -20,6 +20,15 @@ class Vocabulary extends Model
     }
 
     /**
+     * 1-m - restituisce la lista delle voci
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function voicesnotchildren() {
+        $vnc = $this->hasMany('App\Models\Voice','vocabulary_id');
+        return $vnc->where('parent_id', null);
+    }
+
+    /**
      * m-m rest. la lista dei servizi
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
@@ -39,7 +48,6 @@ class Vocabulary extends Model
         'name.max'=>'denominazione vocabolario -> massimo 20 caratteri',
         'name.required'=>'la denominazione vocabolario è un elemento obbligatorio',
         'name.unique'=>'nome del vocabolario già presente nei nostri database',
-        'password.required' => 'la password è un elemento obbligatorio',
         'description.min' => 'descrizione -> minimo 6 caratteri',
         'description.max' => 'descrizione -> massimo 255 caratteri',
     );

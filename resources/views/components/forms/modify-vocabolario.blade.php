@@ -29,7 +29,7 @@
                                type="text" name="description" id="description"
                                placeholder="descrizione vocabolario"
                                value="{{$vocabolario['description']}}"/>
-                        @error('username')
+                        @error('description')
                         <div class="text-red-500 text-left text-sm">{{ $message }}</div>
                         @enderror
                     </div>
@@ -56,6 +56,6 @@
             {{--                <button class="w-1/3 mt-6 ml-2 bg-indigo-100 rounded-lg px-2 py-2 text-lg text-gray-800 tracking-wide font-semibold font-sans close-modal">Annulla</button>--}}
 
         </div>
-        <x-sidebar.menuDxRole menDx="modificaRuolo" roleid="{{$vocabolario->id}}"></x-sidebar.menuDxRole>
+        <x-sidebar.menuDxVocabolario menDx="modificaVocabolario" roleid="{{$vocabolario->id}}"></x-sidebar.menuDxVocabolario>
     </div>
 </main>

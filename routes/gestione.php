@@ -9,6 +9,7 @@ use App\Http\Controllers\UserController;
 
 //use App\Http\Livewire\UserList;
 use App\Http\Controllers\VocabularyController;
+use App\Http\Controllers\VoiceController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -86,7 +87,14 @@ Route::group(['middleware' => ['auth:sanctum', 'verified','role_or_permission:am
     Route::get('/vocabolari', [VocabularyController::class, 'index'])->name('vocabolari');
     Route::get('/vocabolari/crea', [VocabularyController::class, 'create'])->name('creavocabolario');
     Route::post('/vocabolari/salva', [VocabularyController::class, 'store'])->name('salvavocabolario');
+    Route::get('/vocabolari/{id}/show', [VocabularyController::class, 'show'])->name('showvocabolario');
     Route::get('/vocabolari/{id}/edit', [VocabularyController::class, 'edit'])->name('editvocabolario');
     Route::patch('/vocabolari/{id}/update', [VocabularyController::class,'update'])->name('aggiornavocabolario');
     Route::delete('/vocabolari/{id}/delete', [VocabularyController::class, 'destroy'])->name('delvocabolario');
+//  --- Voci vocabolari ---
+    Route::get('/vocabolari/{id}/newvoice', [VoiceController::class, 'create'])->name('creavoce');
+    Route::post('/vocabolari/savevoice', [VoiceController::class, 'store'])->name('salvavoce');
+    Route::get('/vocabolari/{idvoice}/editvoice', [VoiceController::class, 'edit'])->name('editvoce');
+    Route::patch('/vocabolari/{idvoice}/updatevoice', [VoiceController::class,'update'])->name('aggiornavoce');
+    Route::delete('/vocabolari/{idvoice}/deletevoice', [VoiceController::class, 'destroy'])->name('delvocabolario');
 });

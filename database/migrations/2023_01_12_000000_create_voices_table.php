@@ -15,10 +15,10 @@ class CreateVoicesTable extends Migration
     {
         Schema::create('voices', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable();
+            $table->string('name');
             $table->string('code')->nullable();
             $table->string('description')->nullable();
-            $table->foreignId('parent_id')->constrained('voices')->onDelete('cascade');
+            $table->foreignId('parent_id')->nullable()->constrained('voices')->onDelete('cascade');
             $table->unsignedBigInteger('vocabulary_id');
             $table->foreign('vocabulary_id')->references('id')->on('vocabularies')->onDelete('cascade');
             $table->timestamps();

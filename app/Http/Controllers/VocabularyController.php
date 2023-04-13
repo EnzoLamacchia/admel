@@ -36,6 +36,15 @@ class VocabularyController extends Controller
         $vocabolari = Vocabulary::all();
         return view('gestione.vocabolario.index', ['vocabolari'=>$vocabolari]);    }
 
+
+    /**
+     * Visualizza i dettagli di un vocabolario
+     */
+    public function show($id)   {
+        $vocabolario = Vocabulary::find($id);
+        return view('gestione.vocabolario.showvocabolario', ['vocabolario'=>$vocabolario]);    }
+
+
     /**
      * Mostra il form per la creazione di un nuovo vocabolario
      * @return \Illuminate\Contracts\View\View
@@ -59,7 +68,8 @@ class VocabularyController extends Controller
             'description' => $request->input('description'),
         ]);
         if ($vocabolario) session()->flash('messaggio','Salvato!');
-        return view('gestione.vocabolario.editvocabolario', ['vocabolario'=>$vocabolario]);
+//        return view('gestione.vocabolario.editvocabolario', ['vocabolario'=>$vocabolario]);
+        return redirect(route('editvocabolario',['id'=>$vocabolario->id]));
 //        $vocabulary = $this->rp->create($data);
 //        $this->insertParamService($data,$vocabulary);
 //        return redirect('admin/vocabularies')->withSuccess('Vocabolario creato correttamente.');
@@ -89,7 +99,8 @@ class VocabularyController extends Controller
 
         $res = $vocabolario->save();
         if ($res) session()->flash('messaggio','Salvato!');
-        return view('gestione.vocabolario.editvocabolario', ['vocabolario'=>$vocabolario]);
+//        return view('gestione.vocabolario.editvocabolario', ['vocabolario'=>$vocabolario]);
+        return redirect(route('editvocabolario',['id'=>$id]));
     }
 
     /**

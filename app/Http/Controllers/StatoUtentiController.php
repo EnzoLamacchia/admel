@@ -26,7 +26,8 @@ class StatoUtentiController extends Controller
             'user_status' => $request->input('name'),
             'description' => $request->input('description'),
         ]);
-        return view('gestione.stati.editstato', ['stato'=>$stato]);
+//        return view('gestione.stati.editstato', ['stato'=>$stato]);
+        return redirect(route('editstato', ['id'=>$stato['id']]));
     }
 
     public function edit($id)
@@ -44,7 +45,8 @@ class StatoUtentiController extends Controller
 
         $res = $stato->save();
         if ($res) session()->flash('messaggio','Salvato!');
-        return view('gestione.stati.editstato', ['stato'=>$stato]);
+//        return view('gestione.stati.editstato', ['stato'=>$stato]);
+        return redirect(route('editstato', ['id'=>$stato['id']]));
     }
 
     public function destroy($id)
