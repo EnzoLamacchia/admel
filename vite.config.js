@@ -19,6 +19,7 @@ export default defineConfig({
                 'resources/js/setUser2Roles.js',
                 'resources/js/setUser2Permissions.js',
                 'resources/js/manageTable.js',
+                'resources/js/manageFormTable.js',
             ],
             refresh: [
                 ...refreshPaths,

@@ -59,8 +59,14 @@ class Voice extends Model
 
     public static function validateOnUpdate($data)
     {
+//        dd($data);
         $updateRule = static::$baseRules;
-        $updateRule['name'] = ['required','min:2','max:40'];
+//        $updateRule['name'] = ['required','min:2','max:40'];
+        $updateRule['name'] = [
+            'required','min:2','max:40',
+            Rule::unique('voices')->where(fn ($query) =>
+            $query->where('vocabulary_id', $data['vocabulary_id'])->where('id','!=',$data['voice_id']))
+        ];
         $updateMessages = static::$baseMessages;
 //        dd($data, $updateRule);
         return Validator::make($data, $updateRule, $updateMessages);

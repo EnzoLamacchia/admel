@@ -64,7 +64,7 @@ class VoiceController extends Controller
 
         if ($voice) session()->flash('messaggio','Salvato!');
 //        return view('gestione.vocabolario.editvoice', ['voice'=>$voice]);
-        return redirect(route('editvoce', ['idvoice'=>$voice['id']]));
+        return redirect(route('showvocabolario', ['id'=>$voice['vocabulary_id']]));
     }
 
     /**
@@ -95,7 +95,7 @@ class VoiceController extends Controller
 
         $res = $voice->save();
         if ($res) session()->flash('messaggio','Salvato!');
-        return redirect(route('editvoce', ['idvoice'=>$voice['id']]));
+        return redirect(route('showvocabolario', ['id'=>$voice['vocabulary_id']]));
     }
 
     /**
