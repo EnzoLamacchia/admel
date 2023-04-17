@@ -11,7 +11,7 @@
                         <label class="text-gray-800 font-semibold block my-1 text-md text-left pt-3"
                                for="name">Denominazione Ruolo</label>
                         <input class="w-full bg-gray-100 px-4 py-2 rounded-lg focus:outline-none"
-                               type="text" name="name" id="name" placeholder="denominazione ruolo"
+                               type="text" name="name" id="name" placeholder="denominazione stato utente"
                                value="{{$stato['user_status']}}"/>
                         @error('name')
                         <div class="text-red-500 text-left text-sm">{{ $message }}</div>
