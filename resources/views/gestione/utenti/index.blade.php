@@ -47,7 +47,7 @@
                                      @if ( $user->profile_photo_path != null)
                                      src="{{ $user->profile_photo_url }}"
                                      @else
-                                     src="/storage/profile-photos/av.jpg"
+                                     src="/storage/iconsAndBackground/av.jpg"
                                     @endif
                                 >
                                 {{--                                        <img class="w-full h-full rounded-full"--}}

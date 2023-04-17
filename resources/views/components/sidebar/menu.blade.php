@@ -6,7 +6,7 @@
                         border-image: linear-gradient(to right, #F3F4F6 0%, #D1D5DB 100%);
                         border-image-slice: 1;">
                 <div>
-                    <a href="/gestione"><img src="/storage/profile-photos/devEL-logo120trasp.png"></a>
+                    <a href="/gestione"><img src="/storage/iconsAndBackground/devEL-logo120trasp.png"></a>
                 </div>
                 <div class="text-lg font-semibold tracking-normal text-gray-900 uppercase rounded-lg dark-mode:text-white">
                     Management Interface
