@@ -4,7 +4,7 @@ namespace App\View\Components\Forms;
 
 use Illuminate\View\Component;
 
-class ModifyVoicet extends Component
+class ModifyVoice extends Component
 
 {
     /**
@@ -13,12 +13,13 @@ class ModifyVoicet extends Component
      * @return void
      */
 
-    public $vocabolario, $voice;
+//    public $vocabolario, $voice;
+    public $voice;
 
-    public function __construct($vocabolario,$voice)
+    public function __construct($voice)
     {
         //
-        $this->vocabolario = $vocabolario;
+//        $this->vocabolario = $vocabolario;
         $this->voice = $voice;
 
     }
