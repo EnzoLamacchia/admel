@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
         $this->call(CitiesSeeder::Class);
         $this->call(CountriesSeeder::Class);
+        $this->call(VocabularySeeder::Class);
         $this->call(RoleSeeder::Class);
         $this->call(StatusSeeder::Class);
         $this->call(UserSeeder::Class);
