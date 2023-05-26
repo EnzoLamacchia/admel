@@ -85,7 +85,7 @@ E se si lavora con Docker Desktop su una macchina windows , settare il dns local
 (C:\Windows\System32\drivers\etc\hosts)  
 per il sito newapp.test sull'indirizzo 127.0.0.1
 
-##Utilizzo
+## Utilizzo  
 L'accesso all'interfaccia di gestione, in fase iniziale, è possibile attraverso un utente preconfigurato con ruolo di super-administrator.
 Le credenziali sono:
 ```sh
