@@ -83,7 +83,8 @@ docker exec -it newdir-admel-1 bash
 Per finire, se esiste un proxy manager aprire le porte del nuovo sito nomeapp.test.  
 E se si lavora con Docker Desktop su una macchina windows , settare il dns locale  
 (C:\Windows\System32\drivers\etc\hosts)  
-per il sito newapp.test sull'indirizzo 127.0.0.1
+per il sito newapp.test sull'indirizzo 127.0.0.1  
+Nel caso in cui nel browser digitando newapp.test si ottenesse un messaggio di errore 502-bad gateway, riavviare il container.
 
 ## Utilizzo  
 L'accesso all'interfaccia di gestione, in fase iniziale, è possibile attraverso un utente preconfigurato con ruolo di super-administrator.

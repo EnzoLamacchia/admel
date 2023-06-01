@@ -196,7 +196,7 @@
                 </div>
                 <div class="w-full md:w-4/12 px-4 text-center">
                     <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
-                        @if(auth()->user()->hasanyrole('amministratore|redattore')) <a
+                        @if(auth()->user()->hasanyrole('amministratore|gestione_determine')) <a
                             href="/detdir/determinazioni"> @endif
                             <div class="px-4 py-5 flex-auto">
                                 <div
@@ -210,7 +210,7 @@
                                     Sezione riservata alle determinazioni digenziali del CRP
                                 </p>
                             </div>
-                        @if(auth()->user()->hasanyrole('amministratore|redattore')) </a> @endif
+                        @if(auth()->user()->hasanyrole('amministratore|gestione_determine')) </a> @endif
                     </div>
                 </div>
                 <div class="pt-6 w-full md:w-4/12 px-4 text-center">
