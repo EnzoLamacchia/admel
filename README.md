@@ -64,9 +64,9 @@ Nella shell installare le dipendenze dell'applicazione:
 ```sh
 > composer install
 ```
-Terminata l'installazione delle dipendenze, il db (ahimè) di ferma.  
-Pertanto occorre uscire dalla shell, riavviare il container e rientrare nella shell:
-Rintrati nella shell eseguire alcuni comandi artisan, altri relativi al Node Package Manager ed altri ancora per settare i diritti di scrittura sualcune directory/file di Laravel:
+Terminata l'installazione delle dipendenze, il container del db potrebeb stopparsi.  
+In tal caso occorre uscire dalla shell, riavviare il container e rientrare nella shell:
+Rientrati nella shell eseguire alcuni comandi artisan, altri relativi al Node Package Manager ed altri ancora per settare i diritti di scrittura sualcune directory/file di Laravel:
 ```sh
 > exit     --(dalla shell)--
 docker compose down
