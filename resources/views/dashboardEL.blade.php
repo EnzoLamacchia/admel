@@ -204,7 +204,7 @@
                                     {{--                                <i class="fas fa-retweet"></i>--}}
                                     <i class="fas fa-file"></i>
                                 </div>
-                                <h6 class="text-xl font-semibold">Determine Dirigenti CRP</h6>
+                                <h6 class="text-xl font-semibold">Determine Dirigenti</h6>
                                 <p class="mt-2 mb-4 text-gray-600">
                                     Albo Pretorio </br>
                                     Sezione riservata alle determinazioni digenziali del CRP
