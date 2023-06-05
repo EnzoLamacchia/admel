@@ -21,7 +21,7 @@ class Role extends Model
 
     public static $baseRules = array(
         'name' => 'required|string|max:125|min:3|unique:roles',
-        'description' => 'string|max:255|min:3',
+        'description' => 'nullable|string|max:255|min:3',
     );
 
     public static $baseMessages = array(
