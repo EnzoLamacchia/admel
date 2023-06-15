@@ -23,12 +23,15 @@ use Illuminate\Support\Facades\Route;
 ////Route::middleware(['auth:sanctum', 'verified', 'role:amministratore|gestione utenti'])->group(function () {
 //    Route::get('/test', function () {return view('gestione.welcomegest');})->name('gestioneutenti');
 //});
+Route::group(['middleware' => ['auth:sanctum', 'verified']] ,function () {
+    Route::get('/setperpage/{perPage}', [DashboardController::class, 'setPerPage']);
+});
 
 Route::group(['middleware' => ['auth:sanctum', 'verified','role_or_permission:amministratore|gestione utenti|Super Amministratore']] ,function () {
 //Route::middleware(['auth:sanctum', 'verified', 'role:amministratore|gestione utenti'])->group(function () {
 //    Route::get('/', function () {return view('gestione.index');})->name('gestione');
     Route::get('/', [DashboardController::class, 'index'])->name('gestione');
-    Route::get('/setperpage/{perPage}', [DashboardController::class,'setPerPage']);
+
 //  --- Ruoli ---
     Route::get('/ruoli', [RoleController::class,'index'])->name('gestioneruoli');
     Route::get('/ruoli/filtered', [RoleController::class, 'show'])->name('filtraruoli');
